@@ -1,0 +1,44 @@
+<form [formGroup]="form" (ngSubmit)="calculate()">
+  <div class="row">
+    <div class="col-sm">
+      <label for="sourceCurrency" class="form-label">Moneda Origen</label>
+      <input type="text" class="form-control" id="sourceCurrency" formControlName="sourceCurrency" required />
+    </div>
+    <div class="col-sm">
+      <label for="targetCurrency" class="form-label">Moneda Destino</label>
+      <input type="text" class="form-control" id="targetCurrency" formControlName="targetCurrency" required />
+    </div>
+    <div class="col-sm">
+      <label for="amount" class="form-label">Monto</label>
+      <input type="number" class="form-control" id="amount" formControlName="amount" required />
+    </div>
+    <div class="col-sm">
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Calcular</button>
+    </div>
+  </div>
+</form>
+
+<div class="row" *ngIf="model">
+  <div class="col-sm">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Moneda origen</th>
+          <th scope="col">Moneda destino</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Monto convertido</th>
+          <th scope="col">Tipo de cambio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{model.sourceCurrency}}</th>
+          <td>{{model.targetCurrency}}</td>
+          <td>{{model.amount}}</td>
+          <td>{{model.convertedAmount}}</td>
+          <td>{{model.rate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
